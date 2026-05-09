@@ -46,23 +46,23 @@
 
         <div class="grid gap-4 lg:grid-cols-4">
             <div
-                class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                class="rounded-3xl border border-slate-200  p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 ">
                 <p class="text-sm font-medium text-slate-500 dark:text-slate-400">{{ __('Budgets') }}</p>
                 <p class="mt-4 text-3xl font-semibold text-slate-900 dark:text-white">{{ $budgets->count() }}</p>
             </div>
             <div
-                class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                class="rounded-3xl border border-slate-200  p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 ">
                 <p class="text-sm font-medium text-slate-500 dark:text-slate-400">{{ __('Active budgets') }}</p>
                 <p class="mt-4 text-3xl font-semibold text-slate-900 dark:text-white">{{ $activeBudgets }}</p>
             </div>
             <div
-                class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                class="rounded-3xl border border-slate-200  p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 ">
                 <p class="text-sm font-medium text-slate-500 dark:text-slate-400">{{ __('Allocated') }}</p>
                 <p class="mt-4 text-3xl font-semibold text-slate-900 dark:text-white">
                     {{ number_format($totalAllocated, 2) }}</p>
             </div>
             <div
-                class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                class="rounded-3xl border border-slate-200  p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 ">
                 <p class="text-sm font-medium text-slate-500 dark:text-slate-400">{{ __('Spent') }}</p>
                 <p class="mt-4 text-3xl font-semibold text-slate-900 dark:text-white">
                     {{ number_format($totalSpent, 2) }}</p>
@@ -70,7 +70,7 @@
         </div>
 
         @if($budgets->isNotEmpty())
-            <section class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+            <section class="rounded-3xl border border-slate-200  p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 ">
                 <div class="mb-4">
                     <h2 class="text-lg font-semibold text-slate-900 dark:text-white">{{ __('Budget Overview') }}</h2>
                     <p class="text-sm text-slate-500 dark:text-slate-400">{{ __('Comparison of allocated vs spent amounts.') }}</p>
@@ -81,7 +81,7 @@
 
         <div class="grid gap-4 lg:grid-cols-2">
             @if($budgets->isNotEmpty())
-                <section class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                <section class="rounded-3xl border border-slate-200  p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 ">
                     <div class="mb-4">
                         <h2 class="text-lg font-semibold text-slate-900 dark:text-white">{{ __('Budget Distribution') }}</h2>
                         <p class="text-sm text-slate-500 dark:text-slate-400">{{ __('Allocation across different budgets.') }}</p>
@@ -94,7 +94,7 @@
                 $expenseCategories = $categories->where('type', 'expense')->filter(fn($cat) => $cat->expenses_sum_amount > 0)->values();
             @endphp
             @if($expenseCategories->isNotEmpty())
-                <section class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                <section class="rounded-3xl border border-slate-200  p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 ">
                     <div class="mb-4">
                         <h2 class="text-lg font-semibold text-slate-900 dark:text-white">{{ __('Expenses by Category') }}</h2>
                         <p class="text-sm text-slate-500 dark:text-slate-400">{{ __('Breakdown of total expenses.') }}</p>
@@ -106,7 +106,7 @@
 
         <div class="space-y-4">
             <section
-                class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                class="rounded-3xl border border-slate-200  p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 ">
                 <div class="mb-6 flex items-center justify-between gap-4">
                     <div>
                         <h2 class="text-lg font-semibold text-slate-900 dark:text-white">{{ __('Budgets') }}</h2>
@@ -176,8 +176,56 @@
                 @endif
             </section>
 
+            @if ($goals->isNotEmpty())
+                <section class="rounded-3xl border border-slate-200  p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 ">
+                    <div class="mb-6 flex items-center justify-between gap-4">
+                        <div>
+                            <h2 class="text-lg font-semibold text-slate-900 dark:text-white">{{ __('Financial Goals') }}</h2>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">
+                                {{ __('Your savings targets progress.') }}</p>
+                        </div>
+                        <a href="{{ route('budgeting.goals.index') }}" class="text-sm font-medium text-slate-900 hover:underline dark:text-white">{{ __('View All') }} &rarr;</a>
+                    </div>
+
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        @foreach ($goals as $goal)
+                            <div class="flex flex-col justify-between rounded-3xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-700 dark:bg-slate-900 relative overflow-hidden">
+                                <div class="absolute top-0 left-0 w-full h-1" style="background-color: {{ $goal->color ?? '#3b82f6' }};"></div>
+                                
+                                <div class="flex items-start justify-between gap-3 mb-4 mt-1">
+                                    <div>
+                                        <a href="{{ route('budgeting.goals.edit', $goal) }}" class="text-base font-bold text-slate-900 hover:underline dark:text-white">
+                                            {{ $goal->name }}
+                                        </a>
+                                    </div>
+                                    @if ($goal->status === 'achieved')
+                                        <span class="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-semibold text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">
+                                            {{ __('Achieved') }}
+                                        </span>
+                                    @endif
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-end mb-2">
+                                        <div>
+                                            <span class="text-lg font-bold text-slate-900 dark:text-white">{{ number_format($goal->current_amount, 2) }}</span>
+                                            <span class="text-xs text-slate-500 dark:text-slate-400"> / {{ number_format($goal->target_amount, 2) }}</span>
+                                        </div>
+                                        <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ number_format($goal->progress_percentage, 1) }}%</span>
+                                    </div>
+                                    
+                                    <div class="w-full bg-slate-200 rounded-full h-2 dark:bg-slate-800 overflow-hidden">
+                                        <div class="h-2 rounded-full transition-all duration-500" style="width: {{ $goal->progress_percentage }}%; background-color: {{ $goal->color ?? '#3b82f6' }};"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </section>
+            @endif
+
             <section
-                class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                class="rounded-3xl border border-slate-200  p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 ">
                 <div class="mb-6 flex items-center justify-between gap-4">
                     <div>
                         <h2 class="text-lg font-semibold text-slate-900 dark:text-white">
@@ -230,7 +278,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('livewire:navigated', function () {
             var isDarkMode = document.documentElement.classList.contains('dark');
             var textColor = isDarkMode ? '#cbd5e1' : '#64748b';
             var gridColor = isDarkMode ? '#334155' : '#f1f5f9';
@@ -304,12 +352,19 @@
                 }
             };
 
-            var chart = new ApexCharts(document.querySelector("#budgetChart"), options);
-            chart.render();
+            var chartContainer = document.querySelector("#budgetChart");
+            var chart;
+            if (chartContainer) {
+                chartContainer.innerHTML = '';
+                chart = new ApexCharts(chartContainer, options);
+                chart.render();
+            }
             
             // Render Budget Distribution Donut
             var budgetDistributionChart;
-            if (document.querySelector("#budgetDistributionChart")) {
+            var budgetDistributionContainer = document.querySelector("#budgetDistributionChart");
+            if (budgetDistributionContainer) {
+                budgetDistributionContainer.innerHTML = '';
                 var budgetDistributionOptions = {
                     series: @json($budgets->pluck('allocated_amount')->map(fn($v) => (float)$v)),
                     labels: @json($budgets->pluck('name')),
@@ -328,16 +383,19 @@
                         y: { formatter: function (val) { return val.toLocaleString(undefined, { minimumFractionDigits: 2 }); } }
                     }
                 };
-                budgetDistributionChart = new ApexCharts(document.querySelector("#budgetDistributionChart"), budgetDistributionOptions);
+                budgetDistributionChart = new ApexCharts(budgetDistributionContainer, budgetDistributionOptions);
                 budgetDistributionChart.render();
             }
 
             // Render Category Donut
             var categoryChart;
-            if (document.querySelector("#categoryChart")) {
+            var categoryContainer = document.querySelector("#categoryChart");
+            if (categoryContainer) {
+                categoryContainer.innerHTML = '';
                 var categoryOptions = {
                     series: @json($expenseCategories->pluck('expenses_sum_amount')->map(fn($v) => (float)$v)),
                     labels: @json($expenseCategories->pluck('name')),
+                    colors: @json($expenseCategories->map(fn($cat) => !empty($cat->color) ? $cat->color : '#94a3b8')->values()),
                     chart: {
                         type: 'donut',
                         height: 320,
@@ -353,7 +411,7 @@
                         y: { formatter: function (val) { return val.toLocaleString(undefined, { minimumFractionDigits: 2 }); } }
                     }
                 };
-                categoryChart = new ApexCharts(document.querySelector("#categoryChart"), categoryOptions);
+                categoryChart = new ApexCharts(categoryContainer, categoryOptions);
                 categoryChart.render();
             }
             

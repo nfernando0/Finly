@@ -15,7 +15,7 @@
 
         <div class="grid gap-4 xl:grid-cols-[2fr_1fr]">
             <section
-                class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                class="rounded-3xl border border-slate-200  p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 ">
                 <div class="mb-6 flex items-center justify-between gap-4">
                     <div>
                         <h2 class="text-lg font-semibold text-slate-900 dark:text-white">{{ __('All expenses') }}</h2>
@@ -54,7 +54,7 @@
             </section>
 
             <section
-                class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                class="rounded-3xl border border-slate-200  p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 ">
                 <h2 class="text-lg font-semibold text-slate-900 dark:text-white">{{ __('Record expense') }}</h2>
                 <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">{{ __('Add line items for your budget.') }}
                 </p>
@@ -65,14 +65,14 @@
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">
                         {{ __('Title') }}
                         <input type="text" name="title" value="{{ old('title') }}" required
-                            class="mt-2 block w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
+                            class="mt-2 block w-full rounded-3xl border border-slate-200  px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950  dark:text-white" />
                         @error('title') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
                     </label>
 
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">
                         {{ __('Description') }}
                         <textarea name="description" rows="3"
-                            class="mt-2 block w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white">{{ old('description') }}</textarea>
+                            class="mt-2 block w-full rounded-3xl border border-slate-200  px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950  dark:text-white">{{ old('description') }}</textarea>
                         @error('description') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
                     </label>
 
@@ -80,14 +80,14 @@
                         {{ __('Amount') }}
                         <input type="number" step="0.01" min="0" name="amount" value="{{ old('amount') }}"
                             required
-                            class="mt-2 block w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
+                            class="mt-2 block w-full rounded-3xl border border-slate-200  px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950  dark:text-white" />
                         @error('amount') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
                     </label>
 
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">
                         {{ __('Category') }}
                         <select name="category_id"
-                            class="mt-2 block w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+                            class="mt-2 block w-full rounded-3xl border border-slate-200  px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950  dark:text-white">
                             <option value="">{{ __('Uncategorized') }}</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ $category->name }}</option>
@@ -99,7 +99,7 @@
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">
                         {{ __('Budget') }}
                         <select name="budget_id"
-                            class="mt-2 block w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+                            class="mt-2 block w-full rounded-3xl border border-slate-200  px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950  dark:text-white">
                             <option value="">{{ __('No budget') }}</option>
                             @foreach ($budgets as $budget)
                                 <option value="{{ $budget->id }}" @selected(old('budget_id') == $budget->id)>{{ $budget->name }}</option>
@@ -111,12 +111,12 @@
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">
                         {{ __('Occurred at') }}
                         <input type="date" name="occurred_at" value="{{ old('occurred_at', now()->toDateString()) }}" required
-                            class="mt-2 block w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
+                            class="mt-2 block w-full rounded-3xl border border-slate-200  px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950  dark:text-white" />
                         @error('occurred_at') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
                     </label>
 
                     <button type="submit"
-                        class="inline-flex items-center justify-center rounded-3xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200">
+                        class="inline-flex items-center justify-center rounded-3xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 dark: dark:text-slate-950 dark:hover:bg-slate-200">
                         {{ __('Save expense') }}
                     </button>
                 </form>

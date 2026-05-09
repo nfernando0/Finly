@@ -20,9 +20,14 @@
                     {{ __('Dashboard') }}
                 </flux:sidebar.item>
                 <flux:sidebar.group :heading="__('Budgeting')" class="grid">
-                    <flux:sidebar.item icon="wallet" :href="route('budgeting.budgets.index')"
+                    <flux:sidebar.item icon="chart-pie" :href="route('budgeting.budgets.index')"
                         :current="request()->routeIs('budgeting.budgets.*')" wire:navigate>
                         {{ __('Budgets') }}
+                    </flux:sidebar.item>
+
+                    <flux:sidebar.item icon="star" :href="route('budgeting.goals.index')"
+                        :current="request()->routeIs('budgeting.goals.*')" wire:navigate>
+                        {{ __('Goals') }}
                     </flux:sidebar.item>
 
                     <flux:sidebar.item icon="tag" :href="route('budgeting.categories.index')"
@@ -45,17 +50,20 @@
 
         <flux:spacer />
 
-        <flux:sidebar.nav>
-            <flux:sidebar.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit"
-                target="_blank">
-                {{ __('Repository') }}
+        <div class="px-2 pb-2 hidden lg:block">
+            <flux:sidebar.item icon="moon" x-data x-on:click="
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.theme = 'light';
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                }
+            " class="cursor-pointer" data-test="theme-toggle">
+                <span class="dark:hidden">{{ __('Dark Mode') }}</span>
+                <span class="hidden dark:block">{{ __('Light Mode') }}</span>
             </flux:sidebar.item>
-
-            <flux:sidebar.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire"
-                target="_blank">
-                {{ __('Documentation') }}
-            </flux:sidebar.item>
-        </flux:sidebar.nav>
+        </div>
 
         <x-desktop-user-menu class="hidden lg:block" :name="auth()->user()->name" />
     </flux:sidebar>
@@ -86,6 +94,18 @@
                 <flux:menu.separator />
 
                 <flux:menu.radio.group>
+                    <flux:menu.item icon="moon" x-data x-on:click="
+                        if (document.documentElement.classList.contains('dark')) {
+                            document.documentElement.classList.remove('dark');
+                            localStorage.theme = 'light';
+                        } else {
+                            document.documentElement.classList.add('dark');
+                            localStorage.theme = 'dark';
+                        }
+                    " class="cursor-pointer" data-test="theme-toggle-mobile">
+                        <span class="dark:hidden">{{ __('Dark Mode') }}</span>
+                        <span class="hidden dark:block">{{ __('Light Mode') }}</span>
+                    </flux:menu.item>
                     <flux:menu.item :href="route('profile.edit')" icon="cog" wire:navigate>
                         {{ __('Settings') }}
                     </flux:menu.item>

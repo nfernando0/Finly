@@ -50,4 +50,9 @@ class Expense extends Model
     {
         return $this->belongsTo(Transaction::class);
     }
+
+    public function goal(): BelongsTo
+    {
+        return $this->belongsTo(Goal::class);
+    }
 }

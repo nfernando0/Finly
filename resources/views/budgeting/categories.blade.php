@@ -15,7 +15,7 @@
 
         <div class="grid gap-4 xl:grid-cols-[2fr_1fr]">
             <section
-                class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                class="rounded-3xl border border-slate-200  p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 ">
                 <div class="mb-6 flex items-center justify-between gap-4">
                     <div>
                         <h2 class="text-lg font-semibold text-slate-900 dark:text-white">{{ __('Your categories') }}</h2>
@@ -54,7 +54,7 @@
             </section>
 
             <section
-                class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                class="rounded-3xl border border-slate-200  p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 ">
                 <h2 class="text-lg font-semibold text-slate-900 dark:text-white">{{ __('Create category') }}</h2>
                 <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
                     {{ __('Add a category to track expenses or income.') }}</p>
@@ -65,13 +65,13 @@
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">
                         {{ __('Name') }}
                         <input type="text" name="name" value="{{ old('name') }}" required
-                            class="mt-2 block w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
+                            class="mt-2 block w-full rounded-3xl border border-slate-200  px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950  dark:text-white" />
                     </label>
 
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">
                         {{ __('Type') }}
                         <select name="type"
-                            class="mt-2 block w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+                            class="mt-2 block w-full rounded-3xl border border-slate-200  px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950  dark:text-white">
                             <option value="expense">{{ __('Expense') }}</option>
                             <option value="income">{{ __('Income') }}</option>
                         </select>
@@ -80,7 +80,7 @@
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">
                         {{ __('Color') }}
                         <input type="text" name="color" value="{{ old('color') }}" placeholder="#A855F7"
-                            class="mt-2 block w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
+                            class="mt-2 block w-full rounded-3xl border border-slate-200  px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950  dark:text-white" />
                     </label>
 
                     <label class="flex items-center gap-3 text-sm font-medium text-slate-700 dark:text-slate-200">
@@ -90,7 +90,7 @@
                     </label>
 
                     <button type="submit"
-                        class="inline-flex items-center justify-center rounded-3xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200">
+                        class="inline-flex items-center justify-center rounded-3xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 dark: dark:text-slate-950 dark:hover:bg-slate-200">
                         {{ __('Create category') }}
                     </button>
                 </form>

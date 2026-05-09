@@ -9,7 +9,7 @@
 
         <div class="grid gap-4 xl:grid-cols-[2fr_1fr]">
             <section
-                class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                class="rounded-3xl border border-slate-200  p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 ">
                 <form action="{{ route('budgeting.categories.update', $category) }}" method="POST" class="space-y-4">
                     @csrf
                     @method('PATCH')
@@ -17,13 +17,13 @@
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">
                         {{ __('Name') }}
                         <input type="text" name="name" value="{{ old('name', $category->name) }}" required
-                            class="mt-2 block w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
+                            class="mt-2 block w-full rounded-3xl border border-slate-200  px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950  dark:text-white" />
                     </label>
 
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">
                         {{ __('Type') }}
                         <select name="type"
-                            class="mt-2 block w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+                            class="mt-2 block w-full rounded-3xl border border-slate-200  px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950  dark:text-white">
                             <option value="expense" @selected(old('type', $category->type) === 'expense')>{{ __('Expense') }}</option>
                             <option value="income" @selected(old('type', $category->type) === 'income')>{{ __('Income') }}</option>
                         </select>
@@ -33,7 +33,7 @@
                         {{ __('Color') }}
                         <input type="text" name="color" value="{{ old('color', $category->color) }}"
                             placeholder="#A855F7"
-                            class="mt-2 block w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
+                            class="mt-2 block w-full rounded-3xl border border-slate-200  px-4 py-3 text-sm text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950  dark:text-white" />
                     </label>
 
                     <label class="flex items-center gap-3 text-sm font-medium text-slate-700 dark:text-slate-200">
@@ -44,11 +44,11 @@
 
                     <div class="flex gap-3">
                         <button type="submit"
-                            class="inline-flex items-center justify-center rounded-3xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200">
+                            class="inline-flex items-center justify-center rounded-3xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 dark: dark:text-slate-950 dark:hover:bg-slate-200">
                             {{ __('Save changes') }}
                         </button>
                         <a href="{{ route('budgeting.categories.index') }}"
-                            class="inline-flex items-center justify-center rounded-3xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-900">
+                            class="inline-flex items-center justify-center rounded-3xl border border-slate-300  px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-950  dark:text-slate-200 dark:hover:bg-slate-900">
                             {{ __('Cancel') }}
                         </a>
                     </div>
@@ -56,7 +56,7 @@
             </section>
 
             <section
-                class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                class="rounded-3xl border border-slate-200  p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 ">
                 <h2 class="text-lg font-semibold text-slate-900 dark:text-white">{{ __('Category info') }}</h2>
                 <div class="mt-6 space-y-4">
                     <div>
